@@ -6,7 +6,7 @@ function countStudents(filepath) {
     // console.log(db)
     const lines = db.split('\n');
     // console.log(lines.length)
-    const students = lines.length - 1;
+    const students = lines.length - 2;
     console.log(`Number of students: ${students}`);
     const cs = lines.filter((field) => field.endsWith('CS'));
     // console.log(cs);
