@@ -8,16 +8,23 @@ const app = http.createServer(async (req, res) => {
   res.setHeader('Content-Type', 'text/plain');
   if (req.url === '/') {
     res.write('Hello Holberton School!');
+    res.end();
   } else if (req.url === '/students') {
     res.write('This is the list of our students\n');
-    try {
-      const data = await countStudents(process.argv[2]);
-      res.end(`${data.join('\n')}`);
-    } catch (error) {
-      res.end(error.message);
-    }
+    countStudents(process.argv[2])
+      .then(data => {
+        res.write(data.join('\n'))
+        res.end()
+        // try {
+        // const data = await countStudents(process.argv[2]);
+        //res.write(data.toString());
+      })
+      .catch(error => {
+        res.end(error.message);
+      });
+  } else {
+    res.end();
   }
-  res.end();
 });
 app.listen(port);
 module.exports = app;
