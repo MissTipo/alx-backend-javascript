@@ -12,7 +12,7 @@ const app = http.createServer(async (req, res) => {
     res.write('This is the list of our students\n');
     try {
       const data = await countStudents(process.argv[2]);
-      res.end(`${data.join('\n')}`);
+      res.end(`${data}`);
     } catch (error) {
       res.end(error.message);
     }
