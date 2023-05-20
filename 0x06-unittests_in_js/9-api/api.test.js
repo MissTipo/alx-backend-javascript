@@ -18,7 +18,7 @@ describe('Basic integration testing', () => {
   });
 });
 describe('Regex integration testing', () => {
-  describe('GET /cart/:id', () => {
+  describe('GET /', () => {
     it('endpoint GET /cart/:id', (done) => {
       const options = {
         method: 'GET',
