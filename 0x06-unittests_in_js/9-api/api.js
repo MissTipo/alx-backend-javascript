@@ -11,6 +11,7 @@ app.get('/', (req, res) => {
 app.get('/cart/:id([0-9]+)', (req, res) => {
   if (isNaN(id)) {
     res.statusCode = 404;
+    res.send('Not a number');
   } else {
     res.statusCode = 200;
     res.send(`Payment methods for cart ${req.params.id}`);
