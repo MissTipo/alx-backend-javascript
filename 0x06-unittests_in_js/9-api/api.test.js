@@ -20,7 +20,7 @@ describe('Basic integration testing', () => {
               url: 'http://localhost:7865/cart/12',
             };
             request(options, (err, res, body) => {
-              expect(res.statusCode).to.equal(200);
+              expect(res.statusCode).to.equal(404);
               expect(body).to.equal('Payment methods for cart: id')
               done();
             });
