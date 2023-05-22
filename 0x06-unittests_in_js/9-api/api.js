@@ -8,7 +8,11 @@ app.get('/', (req, res) => {
 });
 
 app.get('/cart/:id([0-9]+)', (req, res) => {
-  res.send(`Payment methods for cart ${req.params.id}`);
+  if (isNaN(req.params.id)) {
+    res.statusCode = 404;
+  } else {
+    res.send(`Payment methods for cart ${req.params.id}`);
+  }
 });
 
 app.listen(port, () => {

@@ -18,7 +18,7 @@ describe('Basic integration testing', () => {
   });
 });
 describe('Regex integration testing', () => {
-  describe('GET /', () => {
+  describe('GET /cart/:id', () => {
     it('endpoint GET /cart/:id', (done) => {
       const options = {
         method: 'GET',
@@ -26,7 +26,7 @@ describe('Regex integration testing', () => {
       };
       request(options, (err, res, body) => {
         expect(res.statusCode).to.equal(200);
-        expect(body).to.equal('Payment methods for cart: id')
+        expect(body).to.equal(`Payment methods for cart 12`)
         done();
       });
     });
@@ -35,11 +35,11 @@ describe('Regex integration testing', () => {
     it('endpoint GET /cart/:isNaN', (done) => {
       const options = {
         method: 'GET',
-        url: 'http://localhost:7865/cart/12',
+        url: 'http://localhost:7865/cart/anything',
       };
       request(options, (err, res, body) => {
         expect(res.statusCode).to.equal(404);
-        expect(body).to.equal('Payment methods for cart: id')
+        // expect(body).to.equal('Payment methods for cart: id')
         done();
       });
     });
